@@ -67,7 +67,7 @@ void close()
 
 bool start()
 {
-	bool success;
+	bool success = true;
 	if (init() == false)
 	{
 		success = false;
