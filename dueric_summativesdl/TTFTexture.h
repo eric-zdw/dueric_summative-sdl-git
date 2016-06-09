@@ -10,23 +10,14 @@ private:
 	int width;
 	int height;
 	TTF_Font *font = NULL;
-
+	SDL_Color textColor;
+	SDL_Surface *surface;
+	SDL_Rect renderSpace;
 public:
-	TTFTexture();
-	~TTFTexture();
-	void render(int x, int y, SDL_Rect* clip = NULL, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	TTFTexture(int);
 
-	bool loadFile(std::string path);
-	bool loadText(std::string text, SDL_Color textColor);
-
-	void free();
-
-	void setColor(Uint8 red, Uint8 green, Uint8 blue);
-	void setBlendMode(SDL_BlendMode blending);
-	void setAlpha(Uint8 alpha);
-
-	int getWidth();
-	int getHeight();
+	void CreateText(int, int, std::string, SDL_Renderer*);
+	void setColor(Uint8, Uint8, Uint8);
 
 
 };

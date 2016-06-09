@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string>
 #include "GridTile.h"
+#include "TTFTexture.h"
 
 extern const int SCREEN_WIDTH = 1280;
 extern const int SCREEN_HEIGHT = 720;
@@ -32,6 +33,19 @@ bool init()
 
 		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0xFF);
 		int imgFlags = IMG_INIT_PNG;
+
+		if (!(IMG_Init(imgFlags) & imgFlags))
+		{
+			printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+			success = false;
+		}
+		if (TTF_Init() == -1)
+		{
+			printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
+			success = false;
+		}
+
+
 	}
 
 	return success;
@@ -69,6 +83,8 @@ bool loadMedia()
 {
 	bool success = true;
 
+
+
 	return success;
 }
 
@@ -91,6 +107,7 @@ int main(int argc, char* args[]) {
 	loadMedia();
 
 	GridTile grid(gRenderer);
+	TTFTexture text(16);
 
 
 
@@ -109,6 +126,7 @@ int main(int argc, char* args[]) {
 
 		SDL_RenderClear(gRenderer);
 		grid.render(50, 50, gRenderer);
+		text.CreateText(200, 50, "ohhhh", gRenderer);
 		SDL_RenderPresent(gRenderer);
 	}
 
