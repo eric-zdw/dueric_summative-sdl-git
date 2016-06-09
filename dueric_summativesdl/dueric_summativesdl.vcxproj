@@ -129,13 +129,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Initialize.cpp" />
+    <ClCompile Include="GridTile.cpp" />
+    <ClCompile Include="Initialization.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="TTFTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Initialize.h" />
+    <ClInclude Include="GridTile.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="TTFTexture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
