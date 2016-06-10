@@ -38,7 +38,7 @@ bool init()
 	{
 		gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 		gScreenSurface = SDL_GetWindowSurface(gWindow);
-		gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
+		gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0xFF);
 		int imgFlags = IMG_INIT_PNG;
@@ -134,17 +134,23 @@ int main(int argc, char* args[]) {
 
 	while (!quit)
 	{
+		//~~~~~~~~~~~~~logic step~~~~~~~~~~~~~~~~~~~~
+		player.GetMousePosition();
+
 		while (SDL_PollEvent(&e) != 0)
 		{
 			if (e.type == SDL_QUIT)
 			{
 				quit = true;
 			}
+
+			player.readInput(e);
+			
 		}
+		player.move();
 
-		player.GetMousePosition();
-		
 
+		//~~~~~~~~~~~~~render step~~~~~~~~~~~~~~~~~~~~
 		SDL_RenderClear(gRenderer);
 		for (int x = 0; x < 22; x++)
 		{
@@ -159,7 +165,8 @@ int main(int argc, char* args[]) {
 		player.render(gRenderer);
 		text.CreateText(200, 50, "ohhhh", gRenderer);
 		SDL_RenderPresent(gRenderer);
-		
+
+		//~~~~~~~~~~~~~~~post-render logic step~~~~~~~~~~~~
 	}
 
 
