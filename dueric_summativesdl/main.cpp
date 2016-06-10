@@ -25,6 +25,9 @@ int framesRendered = 0;
 int lowerTime = 0;
 int lowerFrameRate = 0;
 
+int OffsetX = 0;
+int OffsetY = 0;
+
 bool init()
 {
 	bool success = true;
@@ -108,16 +111,6 @@ void close()
 	SDL_Quit();
 }
 
-void logic()
-{
-
-}
-
-void render()
-{
-
-}
-
 int main(int argc, char* args[]) {
 
 	init();
@@ -132,10 +125,14 @@ int main(int argc, char* args[]) {
 
 	Player player(gRenderer);
 
+	SDL_ShowCursor(SDL_DISABLE);
+
 	while (!quit)
 	{
 		//~~~~~~~~~~~~~logic step~~~~~~~~~~~~~~~~~~~~
-		player.GetMousePosition();
+		
+		player.GetMousePosition(OffsetX, OffsetY);
+		std::cout << player.getRealX() << " " << player.getRealY() << std::endl;
 
 		while (SDL_PollEvent(&e) != 0)
 		{
@@ -149,20 +146,23 @@ int main(int argc, char* args[]) {
 		}
 		player.move();
 
+		OffsetX = -(player.getX()) + 640;
+		OffsetY = -(player.getY()) + 360;
+
 
 		//~~~~~~~~~~~~~render step~~~~~~~~~~~~~~~~~~~~
 		SDL_RenderClear(gRenderer);
-		for (int x = 0; x < 22; x++)
+		for (int x = 0; x < 30; x++)
 		{
-			for (int y = 0; y < 13; y++)
+			for (int y = 0; y < 15; y++)
 			{
 				grid.setPosX(x * 64 - 32);
 				grid.setPosY(y * 64 - 32);
-				grid.render(gRenderer);
+				grid.render(gRenderer, OffsetX, OffsetY);
 			}
 		}
 		
-		player.render(gRenderer);
+		player.render(gRenderer, OffsetX, OffsetY);
 		text.CreateText(200, 50, "ohhhh", gRenderer);
 		SDL_RenderPresent(gRenderer);
 

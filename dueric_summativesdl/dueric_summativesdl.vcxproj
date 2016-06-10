@@ -129,18 +129,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EnemyProj.cpp" />
     <ClCompile Include="GridTile.cpp" />
-    <ClCompile Include="Initialization.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MouseButton.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerProj.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="ProjectileSystem.cpp" />
     <ClCompile Include="TTFTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GridTile.h" />
     <ClInclude Include="MouseButton.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerProj.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="TTFTexture.h" />
   </ItemGroup>

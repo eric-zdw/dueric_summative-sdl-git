@@ -14,10 +14,11 @@ private:
 	SDL_Rect renderSpace;
 
 	int posX, posY;
+	int offPosX, offPosY;
 
 public:
 	GridTile(SDL_Renderer*);
-	void render(SDL_Renderer*);
+	void render(SDL_Renderer*, int, int);
 
 	void setPosX(int);
 	void setPosY(int);

@@ -8,12 +8,14 @@ class Player
 public:
 	Player(SDL_Renderer*);
 	void readInput(SDL_Event& e);
-	void render(SDL_Renderer*);
+	void render(SDL_Renderer*, int, int);
 
 	static const int PLAYER_WIDTH = 48;
 	static const int PLAYER_HEIGHT = 48;
+	static const int PLAYER_OFFSETX = -24;
+	static const int PLAYER_OFFSETY = -24;
 
-	static const int PLAYER_SPEED = 4;
+	static const int PLAYER_SPEED = 6;
 
 	static const int CROSS_WIDTH = 24;
 	static const int CROSS_HEIGHT = 24;
@@ -23,14 +25,23 @@ public:
 	void move();
 	void resetSpeed();
 
-	void GetMousePosition();
+	void GetMousePosition(int, int);
+
+	int getX();
+	int getY();
+
+	int getRealX();
+	int getRealY();
 
 private:
 	int posX, posY;
+	int offPosX, offPosY;
+
 	int dirX, dirY;
 	int accX, accY;
 
 	int mousePosX, mousePosY;
+	int mouseRealX, mouseRealY;
 
 	std::string path;
 	SDL_Texture *crosshairTexture;

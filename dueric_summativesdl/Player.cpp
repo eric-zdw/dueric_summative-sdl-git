@@ -75,15 +75,25 @@ void Player::readInput(SDL_Event& e)
 	}
 }
 
-void Player::GetMousePosition()
+void Player::GetMousePosition(int offsetX, int offsetY)
 {
 	SDL_GetMouseState(&mousePosX, &mousePosY);
 	crosshairSpace.x = mousePosX + CROSS_OFFSETX;
 	crosshairSpace.y = mousePosY + CROSS_OFFSETY;
+
+	mouseRealX = crosshairSpace.x + offsetX;
+	mouseRealY = crosshairSpace.y + offsetY;
+
 }
 
-void Player::render(SDL_Renderer *renderer)
+void Player::render(SDL_Renderer *renderer, int offsetX, int offsetY)
 {
+	offPosX = posX + offsetX + PLAYER_OFFSETX;
+	offPosY = posY + offsetY + PLAYER_OFFSETY;
+
+	playerSpace.x = offPosX;
+	playerSpace.y = offPosY;
+
 	SDL_RenderCopy(renderer, playerTexture, NULL, &playerSpace);
 	SDL_RenderCopy(renderer, crosshairTexture, NULL, &crosshairSpace);
 }
@@ -106,13 +116,30 @@ void Player::move()
 	{
 		posY -= PLAYER_SPEED;
 	}
-
-	playerSpace.x = posX;
-	playerSpace.y = posY;
 }
 
 void Player::resetSpeed()
 {
 	//dirX = 0;
 	//dirY = 0;
+}
+
+int Player::getX()
+{
+	return posX;
+}
+
+int Player::getY()
+{
+	return posY;
+}
+
+int Player::getRealX()
+{
+	return mouseRealX;
+}
+
+int Player::getRealY()
+{
+	return mouseRealY;
 }
