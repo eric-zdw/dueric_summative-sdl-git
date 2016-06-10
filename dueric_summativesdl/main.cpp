@@ -86,8 +86,6 @@ SDL_Surface* loadSurface(std::string path)
 }
 
 
-
-
 bool loadMedia()
 {
 	bool success = true;
@@ -108,6 +106,16 @@ void close()
 
 	IMG_Quit();
 	SDL_Quit();
+}
+
+void logic()
+{
+
+}
+
+void render()
+{
+
 }
 
 int main(int argc, char* args[]) {
@@ -138,7 +146,16 @@ int main(int argc, char* args[]) {
 		
 
 		SDL_RenderClear(gRenderer);
-		grid.render(50, 50, gRenderer);
+		for (int x = 0; x < 22; x++)
+		{
+			for (int y = 0; y < 13; y++)
+			{
+				grid.setPosX(x * 64 - 32);
+				grid.setPosY(y * 64 - 32);
+				grid.render(gRenderer);
+			}
+		}
+		
 		player.render(gRenderer);
 		text.CreateText(200, 50, "ohhhh", gRenderer);
 		SDL_RenderPresent(gRenderer);

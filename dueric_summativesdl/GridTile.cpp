@@ -10,12 +10,24 @@ GridTile::GridTile(SDL_Renderer* renderer)
 
 	renderSpace.h = GRID_HEIGHT;
 	renderSpace.w = GRID_WIDTH;
+	posX = 0;
+	posY = 0;
 }
 
-void GridTile::render(int x, int y, SDL_Renderer* renderer)
+void GridTile::render(SDL_Renderer* renderer)
 {
-	renderSpace.x = x;
-	renderSpace.y = y;
+	renderSpace.x = posX;
+	renderSpace.y = posY;
 
 	SDL_RenderCopy(renderer, gridTexture, NULL, &renderSpace);
+}
+
+void GridTile::setPosX(int x)
+{
+	posX = x;
+}
+
+void GridTile::setPosY(int y)
+{
+	posY = y;
 }
