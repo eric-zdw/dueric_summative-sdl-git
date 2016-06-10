@@ -1,9 +1,11 @@
 #include <SDL.h>
+#include <iostream>
 #include <SDL_image.h>
 #include <stdio.h>
 #include <string>
 #include "GridTile.h"
 #include "TTFTexture.h"
+#include "Player.h"
 
 extern const int SCREEN_WIDTH = 1280;
 extern const int SCREEN_HEIGHT = 720;
@@ -15,6 +17,13 @@ SDL_Texture* gTexture = NULL;
 SDL_Renderer* gRenderer = NULL;
 
 //bool init(SDL_Window* window, SDL_Surface* screenSurface, SDL_Renderer* renderer);
+
+//frame rate timer
+int timeInterval = 0;
+int framesRendered = 0;
+
+int lowerTime = 0;
+int lowerFrameRate = 0;
 
 bool init()
 {
@@ -110,9 +119,10 @@ int main(int argc, char* args[]) {
 	TTFTexture text(16);
 
 
-
 	bool quit = false;
 	SDL_Event e;
+
+	Player player(gRenderer);
 
 	while (!quit)
 	{
@@ -124,14 +134,16 @@ int main(int argc, char* args[]) {
 			}
 		}
 
+		player.GetMousePosition();
+		
+
 		SDL_RenderClear(gRenderer);
 		grid.render(50, 50, gRenderer);
+		player.render(gRenderer);
 		text.CreateText(200, 50, "ohhhh", gRenderer);
 		SDL_RenderPresent(gRenderer);
+		
 	}
-
-
-
 
 
 	close();
