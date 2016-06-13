@@ -11,7 +11,7 @@ private:
 	double speedX;
 	double speedY;
 
-	bool isActive;
+	bool active;
 
 	int vectorX, vectorY;
 
@@ -42,5 +42,6 @@ public:
 
 	void Propogate();
 
+	bool isActive();
 
 };

@@ -23,6 +23,9 @@ public:
 	static const int CROSS_OFFSETX = -12;
 	static const int CROSS_OFFSETY = -12;
 
+	static const int FIRE_RATE = 7;
+
+	//declared in .cpp
 	double PROJECTILE_SPEED;
 
 	void move();
@@ -39,6 +42,10 @@ public:
 	int cursorRotation;
 	void cursorRotate();
 
+
+	int ShootMechanism();
+	bool Shooting();
+
 private:
 	int posX, posY;
 
@@ -47,6 +54,10 @@ private:
 
 	int mouseRenderX, mouseRenderY;
 	int mousePosX, mousePosY;
+
+	bool isShooting;
+
+	int shootDelay;
 
 	std::string path;
 	SDL_Texture *crosshairTexture;

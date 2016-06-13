@@ -17,7 +17,12 @@ void ProjectileSystem::moveProjectiles()
 {
 	for (int x = 0; x < ppList.size(); x++)
 	{
-		ppList[x].Propogate();
+		if (ppList[x].isActive() == true)
+			ppList[x].Propogate();
+		else
+		{
+			ppList.erase(ppList.begin() + x);
+		}
 	}
 }
 

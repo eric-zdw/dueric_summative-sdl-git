@@ -17,8 +17,8 @@ GridTile::GridTile(SDL_Renderer* renderer)
 void GridTile::render(SDL_Renderer* renderer, int offsetX, int offsetY)
 {
 
-	offPosX = posX + offsetX;
-	offPosY = posY + offsetY;
+	offPosX = posX + offsetX + 32;
+	offPosY = posY + offsetY + 32;
 
 	renderSpace.x = offPosX;
 	renderSpace.y = offPosY;

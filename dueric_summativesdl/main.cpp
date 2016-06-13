@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "ProjectileSystem.h"
 
+
 extern const int SCREEN_WIDTH = 1280;
 extern const int SCREEN_HEIGHT = 720;
 
@@ -29,7 +30,7 @@ bool init()
 	}
 	else
 	{
-		gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		gWindow = SDL_CreateWindow("METROSCOPE", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 		gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0xFF);
@@ -98,31 +99,42 @@ int main(int argc, char* args[]) {
 			}
 
 			player.readInput(e, ps, gRenderer);
-			if (e.type == SDL_MOUSEBUTTONDOWN)
-			{
-				if (e.button.button == SDL_BUTTON_LEFT)
-				{
-					ps.CreatePlayerProj(player.getX(), player.getY(), player.getCrossX(), player.getCrossY(), player.PROJECTILE_SPEED, gRenderer);
-				}
-			}
-			
 		}
 		player.move();
 
-		OffsetX = -(player.getX()) + (SCREEN_WIDTH / 2);
-		OffsetY = -(player.getY()) + (SCREEN_HEIGHT / 2);
-
+		if (player.Shooting() == true)
+		{
+			if (player.ShootMechanism() == 1)
+			{
+				ps.CreatePlayerProj(player.getX(), player.getY(), player.getCrossX(), player.getCrossY(), player.PROJECTILE_SPEED, gRenderer);
+				shakeIntensity += 5;
+			}
+		}
 
 		ps.moveProjectiles();
 
 		player.cursorRotate();
 
+		
 
 		//~~~~~~~~~~~~~render step~~~~~~~~~~~~~~~~~~~~
 		SDL_RenderClear(gRenderer);
-		for (int x = 0; x < 30; x++)
+
+		if (shakeIntensity != 0)
 		{
-			for (int y = 0; y < 15; y++)
+			OffsetX = -(player.getX()) + (SCREEN_WIDTH / 2) + (rand() % (2 * shakeIntensity) - shakeIntensity);
+			OffsetY = -(player.getY()) + (SCREEN_HEIGHT / 2) + (rand() % (2 * shakeIntensity) - shakeIntensity);
+		}
+		else
+		{
+			OffsetX = -(player.getX()) + (SCREEN_WIDTH / 2);
+			OffsetY = -(player.getY()) + (SCREEN_HEIGHT / 2);
+		}
+
+
+		for (int x = 0; x < 32; x++)
+		{
+			for (int y = 0; y < 16; y++)
 			{
 				grid.setPosX(x * 64 - 32);
 				grid.setPosY(y * 64 - 32);
@@ -135,6 +147,10 @@ int main(int argc, char* args[]) {
 
 
 		SDL_RenderPresent(gRenderer);
+
+		//~~~~~~~~~~~~~post-render logic~~~~~~~~~~~~~~~~~~~
+		if (shakeIntensity != 0)
+			shakeIntensity *= 0.9;
 	}
 
 

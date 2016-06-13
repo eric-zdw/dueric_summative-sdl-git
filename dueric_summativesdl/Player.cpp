@@ -1,6 +1,8 @@
 #include "Player.h"
 #include <iostream>
 
+extern int shakeIntensity;
+
 Player::Player(SDL_Renderer *renderer)
 {
 	posX = 0;
@@ -27,7 +29,10 @@ Player::Player(SDL_Renderer *renderer)
 	playerSpace.h = PLAYER_HEIGHT;
 	playerSpace.w = PLAYER_WIDTH;
 
-	PROJECTILE_SPEED = 25.f;
+	PROJECTILE_SPEED = 30.f;
+
+	isShooting = false;
+	shootDelay = 0;
 }
 
 void Player::readInput(SDL_Event& e, ProjectileSystem ps, SDL_Renderer *renderer)
@@ -77,6 +82,23 @@ void Player::readInput(SDL_Event& e, ProjectileSystem ps, SDL_Renderer *renderer
 			break;
 		}
 	}
+
+	if (e.type == SDL_MOUSEBUTTONDOWN)
+	{
+		if (e.button.button == SDL_BUTTON_LEFT)
+		{
+			isShooting = true;
+		}
+	}
+
+	if (e.type == SDL_MOUSEBUTTONUP)
+	{
+		if (e.button.button == SDL_BUTTON_LEFT)
+		{
+			isShooting = false;
+			shootDelay = 0;
+		}
+	}
 }
 
 void Player::GetMousePosition(int offsetX, int offsetY)
@@ -117,6 +139,15 @@ void Player::move()
 	{
 		posY -= PLAYER_SPEED;
 	}
+
+	if (posX < 0)
+		posX = 0;
+	if (posX > 2048)
+		posX = 2048;
+	if (posY < 0)
+		posY = 0;
+	if (posY > 1024)
+		posY = 1024;
 }
 
 void Player::resetSpeed()
@@ -150,4 +181,24 @@ void Player::cursorRotate()
 	if (cursorRotation >= 360)
 		cursorRotation = 0;
 	cursorRotation += 3;
+}
+
+int Player::ShootMechanism()
+{
+	std::cout << shootDelay << std::endl;
+	if (shootDelay != 0)
+	{
+		shootDelay -= 1;
+		return -1;
+	}
+	else if (shootDelay <= 0)
+	{
+		shootDelay = FIRE_RATE;
+		return 1;
+	}
+}
+
+bool Player::Shooting()
+{
+	return isShooting;
 }

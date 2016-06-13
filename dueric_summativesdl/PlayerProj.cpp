@@ -14,4 +14,6 @@ PlayerProj::PlayerProj(int x1, int y1, int x2, int y2, double speed, SDL_Rendere
 	path = "playerproj.png";
 	surface = IMG_Load(path.c_str());
 	texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	lifetime = 200;
 }

@@ -23,6 +23,8 @@ Projectile::Projectile(int x1, int y1, int x2, int y2, double speed)
 	speedX = (speed * cos(radians));
 	speedY = -(speed * sin(radians));
 	std::cout << radians * (180 / M_PI) << std::endl;
+
+	active = true;
 }
 
 void Projectile::render(SDL_Renderer* renderer, int offsetX, int offsetY)
@@ -41,4 +43,16 @@ void Projectile::Propogate()
 {
 	posX += speedX;
 	posY += speedY;
+
+	lifetime--;
+	if (lifetime <= 0)
+		active = false;
+
+//	if (posX > 2048 || posX < 0 || posY > 1024 || posY < 0)
+//		active = false;
+}
+
+bool Projectile::isActive()
+{
+	return active;
 }
