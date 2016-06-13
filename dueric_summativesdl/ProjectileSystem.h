@@ -13,7 +13,7 @@ private:
 
 public:
 	ProjectileSystem(SDL_Renderer*);
-	void CreatePlayerProj(int, int, int, int, int, SDL_Renderer*);
+	void CreatePlayerProj(int, int, int, int, double, SDL_Renderer*);
 	void moveProjectiles();
 	void renderProjectiles(SDL_Renderer*, int, int);
 	int getSize();

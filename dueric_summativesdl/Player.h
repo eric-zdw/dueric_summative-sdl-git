@@ -23,7 +23,7 @@ public:
 	static const int CROSS_OFFSETX = -12;
 	static const int CROSS_OFFSETY = -12;
 
-	static const int PROJECTILE_SPEED = 5;
+	double PROJECTILE_SPEED;
 
 	void move();
 	void resetSpeed();
@@ -36,7 +36,8 @@ public:
 	int getCrossX();
 	int getCrossY();
 
-	void Shoot(ProjectileSystem, SDL_Renderer*);
+	int cursorRotation;
+	void cursorRotate();
 
 private:
 	int posX, posY;

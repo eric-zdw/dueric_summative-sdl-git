@@ -1,14 +1,11 @@
-﻿Build started 6/12/2016 9:41:52 PM.
+﻿Build started 6/12/2016 10:53:30 PM.
      1>Project "C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\dueric_summativesdl\dueric_summativesdl.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt ProjectileSystem.cpp main.cpp
-         main.cpp
-         ProjectileSystem.cpp
-     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\projectilesystem.cpp(19): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\projectilesystem.cpp(28): warning C4018: '<': signed/unsigned mismatch
-         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Player.cpp
+         Player.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\Debug\dueric_summativesdl.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\Debug\dueric_summativesdl.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\Debug\dueric_summativesdl.lib" /MACHINE:X86 Debug\EnemyProj.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\Debug\dueric_summativesdl.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\Debug\dueric_summativesdl.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\Debug\dueric_summativesdl.lib" /MACHINE:X86 Debug\Enemy.obj
+         Debug\EnemyProj.obj
          Debug\GridTile.obj
          Debug\main.obj
          Debug\Player.obj
@@ -20,4 +17,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.56
+Time Elapsed 00:00:00.81

@@ -7,11 +7,10 @@ ProjectileSystem::ProjectileSystem(SDL_Renderer* renderer)
 {
 }
 
-void ProjectileSystem::CreatePlayerProj(int x1, int y1, int x2, int y2, int speed, SDL_Renderer *renderer)
+void ProjectileSystem::CreatePlayerProj(int x1, int y1, int x2, int y2, double speed, SDL_Renderer *renderer)
 {
 	PlayerProj proj(x1, y1, x2, y2, speed, renderer);
 	ppList.push_back(proj);
-
 }
 
 void ProjectileSystem::moveProjectiles()
@@ -19,7 +18,6 @@ void ProjectileSystem::moveProjectiles()
 	for (int x = 0; x < ppList.size(); x++)
 	{
 		ppList[x].Propogate();
-		std::cout << "propogating " << x << std::endl;
 	}
 }
 

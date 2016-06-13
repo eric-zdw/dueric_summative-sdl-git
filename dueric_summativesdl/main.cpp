@@ -10,6 +10,8 @@
 extern const int SCREEN_WIDTH = 1280;
 extern const int SCREEN_HEIGHT = 720;
 
+extern int shakeIntensity = 0;
+
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
 
@@ -96,6 +98,13 @@ int main(int argc, char* args[]) {
 			}
 
 			player.readInput(e, ps, gRenderer);
+			if (e.type == SDL_MOUSEBUTTONDOWN)
+			{
+				if (e.button.button == SDL_BUTTON_LEFT)
+				{
+					ps.CreatePlayerProj(player.getX(), player.getY(), player.getCrossX(), player.getCrossY(), player.PROJECTILE_SPEED, gRenderer);
+				}
+			}
 			
 		}
 		player.move();
@@ -103,8 +112,10 @@ int main(int argc, char* args[]) {
 		OffsetX = -(player.getX()) + (SCREEN_WIDTH / 2);
 		OffsetY = -(player.getY()) + (SCREEN_HEIGHT / 2);
 
-		//ps.moveProjectiles();
-		std::cout << ps.getSize() << std::endl;
+
+		ps.moveProjectiles();
+
+		player.cursorRotate();
 
 
 		//~~~~~~~~~~~~~render step~~~~~~~~~~~~~~~~~~~~
@@ -120,12 +131,10 @@ int main(int argc, char* args[]) {
 		}
 		
 		player.render(gRenderer, OffsetX, OffsetY);
-		//ps.renderProjectiles(gRenderer, OffsetX, OffsetY);
+		ps.renderProjectiles(gRenderer, OffsetX, OffsetY);
 
 
 		SDL_RenderPresent(gRenderer);
-
-		//~~~~~~~~~~~~~~~post-render logic step~~~~~~~~~~~~
 	}
 
 

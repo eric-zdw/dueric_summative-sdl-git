@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyProj.cpp" />
     <ClCompile Include="GridTile.cpp" />
     <ClCompile Include="main.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="ProjectileSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="GridTile.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerProj.h" />

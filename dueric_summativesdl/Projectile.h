@@ -8,8 +8,8 @@
 class Projectile {
 
 private:
-	int speedX;
-	int speedY;
+	double speedX;
+	double speedY;
 
 	bool isActive;
 
@@ -19,7 +19,7 @@ protected:
 	int projWidth;
 	int projHeight;
 
-	int posX, posY;
+	double posX, posY;
 	int endX, endY;
 
 	double speed;
@@ -37,7 +37,7 @@ protected:
 	double hyp;
 
 public:
-	Projectile(int x1, int y1, int x2, int y2, int speed);
+	Projectile(int x1, int y1, int x2, int y2, double speed);
 	void render(SDL_Renderer *renderer, int, int);
 
 	void Propogate();

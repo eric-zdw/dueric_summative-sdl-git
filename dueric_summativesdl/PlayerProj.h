@@ -11,7 +11,7 @@ private:
 
 
 public:
-	PlayerProj(int x1, int y1, int x2, int y2, int speed, SDL_Renderer *renderer);
+	PlayerProj(int x1, int y1, int x2, int y2, double speed, SDL_Renderer *renderer);
 
 
 

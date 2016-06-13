@@ -10,6 +10,8 @@ Player::Player(SDL_Renderer *renderer)
 	accX = 0;
 	accY = 0;
 
+	cursorRotation = 0;
+
 	path = "crosshair.png";
 	surface = IMG_Load(path.c_str());
 	crosshairTexture = SDL_CreateTextureFromSurface(renderer, surface);
@@ -24,6 +26,8 @@ Player::Player(SDL_Renderer *renderer)
 	crosshairSpace.w = CROSS_WIDTH;
 	playerSpace.h = PLAYER_HEIGHT;
 	playerSpace.w = PLAYER_WIDTH;
+
+	PROJECTILE_SPEED = 25.f;
 }
 
 void Player::readInput(SDL_Event& e, ProjectileSystem ps, SDL_Renderer *renderer)
@@ -73,14 +77,6 @@ void Player::readInput(SDL_Event& e, ProjectileSystem ps, SDL_Renderer *renderer
 			break;
 		}
 	}
-
-	if (e.type == SDL_MOUSEBUTTONDOWN)
-	{
-		if (e.button.button == SDL_BUTTON_LEFT)
-		{
-			Shoot(ps, renderer);
-		}
-	}
 }
 
 void Player::GetMousePosition(int offsetX, int offsetY)
@@ -99,7 +95,8 @@ void Player::render(SDL_Renderer *renderer, int offsetX, int offsetY)
 	crosshairSpace.y = mouseRenderY + CROSS_OFFSETY;
 
 	SDL_RenderCopy(renderer, playerTexture, NULL, &playerSpace);
-	SDL_RenderCopy(renderer, crosshairTexture, NULL, &crosshairSpace);
+	//SDL_RenderCopy(renderer, crosshairTexture, NULL, &crosshairSpace);
+	SDL_RenderCopyEx(renderer, crosshairTexture, NULL, &crosshairSpace, cursorRotation, NULL, SDL_FLIP_NONE);
 }
 
 void Player::move()
@@ -148,7 +145,9 @@ int Player::getCrossY()
 	return mousePosY;
 }
 
-void Player::Shoot(ProjectileSystem ps, SDL_Renderer *renderer)
+void Player::cursorRotate()
 {
-	ps.CreatePlayerProj(posX, posY, mousePosX, mousePosY, PROJECTILE_SPEED, renderer);
+	if (cursorRotation >= 360)
+		cursorRotation = 0;
+	cursorRotation += 3;
 }

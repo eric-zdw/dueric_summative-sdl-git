@@ -1,9 +1,10 @@
 #include "Projectile.h"
+#include <iostream>
 
-Projectile::Projectile(int x1, int y1, int x2, int y2, int speed)
+Projectile::Projectile(int x1, int y1, int x2, int y2, double speed)
 {
-	posX = x1;
-	posY = y1;
+	posX = (float)x1;
+	posY = (float)y1;
 
 	projHeight = 4;
 	projWidth = 4;
@@ -12,9 +13,16 @@ Projectile::Projectile(int x1, int y1, int x2, int y2, int speed)
 	vectorY = y1 - y2;
 
 	hyp = sqrt((vectorX * vectorX) + (vectorY * vectorY));
-	radians = atan2(y1 - y2, x2 - x1);
+	if (y2 > y1)
+	{
+		radians = (2 * M_PI) - atan2(abs(y2 - y1), x2 - x1);
+	}
+	else
+		radians = atan2(abs(y2 - y1), x2 - x1);
+
 	speedX = (speed * cos(radians));
-	speedY = (speed * sin(radians));
+	speedY = -(speed * sin(radians));
+	std::cout << radians * (180 / M_PI) << std::endl;
 }
 
 void Projectile::render(SDL_Renderer* renderer, int offsetX, int offsetY)
@@ -22,13 +30,14 @@ void Projectile::render(SDL_Renderer* renderer, int offsetX, int offsetY)
 	offPosX = posX + offsetX;
 	offPosY = posY + offsetY;
 
-	renderSpace.x = offPosX;
-	renderSpace.y = offPosY;
+	renderSpace.x = offPosX - (projWidth / 2);
+	renderSpace.y = offPosY - (projHeight / 2);
 
-	SDL_RenderCopy(renderer, texture, NULL, &renderSpace);
+	//SDL_RenderCopy(renderer, texture, NULL, &renderSpace);
+	SDL_RenderCopyEx(renderer, texture, NULL, &renderSpace, -(radians * (180 / M_PI)) - 90, NULL, SDL_FLIP_NONE);
 }
 
-void Projectile::Propogate()
+void Projectile::Propogate()	
 {
 	posX += speedX;
 	posY += speedY;
