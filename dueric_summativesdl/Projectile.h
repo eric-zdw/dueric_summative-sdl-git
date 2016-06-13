@@ -13,6 +13,8 @@ private:
 
 	bool isActive;
 
+	int vectorX, vectorY;
+
 protected:
 	int projWidth;
 	int projHeight;
@@ -23,20 +25,22 @@ protected:
 	double speed;
 	int lifetime;
 
+	std::string path;
+
 	SDL_Texture *texture;
 	SDL_Surface *surface;
 	SDL_Rect renderSpace;
+
+	int offPosX, offPosY;
 	
 	double radians;
 	double hyp;
 
 public:
-	Projectile(int x1, int y1, int x2, int y2, int xs, int ys, SDL_Renderer*);
-	void render(SDL_Renderer *renderer);
+	Projectile(int x1, int y1, int x2, int y2, int speed);
+	void render(SDL_Renderer *renderer, int, int);
 
 	void Propogate();
-
-	void setSize(int, int);
 
 
 };

@@ -2,12 +2,13 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
+#include "ProjectileSystem.h"
 
 class Player
 {
 public:
 	Player(SDL_Renderer*);
-	void readInput(SDL_Event& e);
+	void readInput(SDL_Event&, ProjectileSystem, SDL_Renderer*);
 	void render(SDL_Renderer*, int, int);
 
 	static const int PLAYER_WIDTH = 48;
@@ -22,6 +23,8 @@ public:
 	static const int CROSS_OFFSETX = -12;
 	static const int CROSS_OFFSETY = -12;
 
+	static const int PROJECTILE_SPEED = 5;
+
 	void move();
 	void resetSpeed();
 
@@ -30,18 +33,19 @@ public:
 	int getX();
 	int getY();
 
-	int getRealX();
-	int getRealY();
+	int getCrossX();
+	int getCrossY();
+
+	void Shoot(ProjectileSystem, SDL_Renderer*);
 
 private:
 	int posX, posY;
-	int offPosX, offPosY;
 
 	int dirX, dirY;
 	int accX, accY;
 
+	int mouseRenderX, mouseRenderY;
 	int mousePosX, mousePosY;
-	int mouseRealX, mouseRealY;
 
 	std::string path;
 	SDL_Texture *crosshairTexture;

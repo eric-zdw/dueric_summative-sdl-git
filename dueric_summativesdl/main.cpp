@@ -4,26 +4,14 @@
 #include <stdio.h>
 #include <string>
 #include "GridTile.h"
-#include "TTFTexture.h"
 #include "Player.h"
+#include "ProjectileSystem.h"
 
 extern const int SCREEN_WIDTH = 1280;
 extern const int SCREEN_HEIGHT = 720;
 
 SDL_Window* gWindow = NULL;
-SDL_Surface* gScreenSurface = NULL;
-SDL_Surface* gCurrentSurface = NULL;
-SDL_Texture* gTexture = NULL;
 SDL_Renderer* gRenderer = NULL;
-
-//bool init(SDL_Window* window, SDL_Surface* screenSurface, SDL_Renderer* renderer);
-
-//frame rate timer
-int timeInterval = 0;
-int framesRendered = 0;
-
-int lowerTime = 0;
-int lowerFrameRate = 0;
 
 int OffsetX = 0;
 int OffsetY = 0;
@@ -34,13 +22,12 @@ bool init()
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
-		printf("you suck lol");
+		printf("SDL initialization failed!");
 		success = false;
 	}
 	else
 	{
 		gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-		gScreenSurface = SDL_GetWindowSurface(gWindow);
 		gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0xFF);
@@ -51,43 +38,12 @@ bool init()
 			printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
 			success = false;
 		}
-		if (TTF_Init() == -1)
-		{
-			printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
-			success = false;
-		}
 
 
 	}
 
 	return success;
-
 }
-
-SDL_Texture* loadTexture(std::string path)
-{
-	SDL_Texture* newTexture = NULL;
-	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
-
-	newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
-	SDL_FreeSurface(loadedSurface);
-
-	return newTexture;
-
-}
-
-SDL_Surface* loadSurface(std::string path)
-{
-
-	SDL_Surface* optimizedSurface = NULL;
-	SDL_Surface* loadedSurface = SDL_LoadBMP(path.c_str());
-
-	optimizedSurface = SDL_ConvertSurface(loadedSurface, gScreenSurface->format, NULL);
-	SDL_FreeSurface(loadedSurface);
-
-	return optimizedSurface;
-}
-
 
 bool loadMedia()
 {
@@ -100,8 +56,6 @@ bool loadMedia()
 
 void close()
 {
-	SDL_DestroyTexture(gTexture);
-	gTexture = NULL;
 	SDL_DestroyRenderer(gRenderer);
 	SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
@@ -116,8 +70,9 @@ int main(int argc, char* args[]) {
 	init();
 	loadMedia();
 
+	ProjectileSystem ps(gRenderer);
+
 	GridTile grid(gRenderer);
-	TTFTexture text(16);
 
 
 	bool quit = false;
@@ -132,7 +87,6 @@ int main(int argc, char* args[]) {
 		//~~~~~~~~~~~~~logic step~~~~~~~~~~~~~~~~~~~~
 		
 		player.GetMousePosition(OffsetX, OffsetY);
-		std::cout << player.getRealX() << " " << player.getRealY() << std::endl;
 
 		while (SDL_PollEvent(&e) != 0)
 		{
@@ -141,13 +95,16 @@ int main(int argc, char* args[]) {
 				quit = true;
 			}
 
-			player.readInput(e);
+			player.readInput(e, ps, gRenderer);
 			
 		}
 		player.move();
 
-		OffsetX = -(player.getX()) + 640;
-		OffsetY = -(player.getY()) + 360;
+		OffsetX = -(player.getX()) + (SCREEN_WIDTH / 2);
+		OffsetY = -(player.getY()) + (SCREEN_HEIGHT / 2);
+
+		//ps.moveProjectiles();
+		std::cout << ps.getSize() << std::endl;
 
 
 		//~~~~~~~~~~~~~render step~~~~~~~~~~~~~~~~~~~~
@@ -163,7 +120,9 @@ int main(int argc, char* args[]) {
 		}
 		
 		player.render(gRenderer, OffsetX, OffsetY);
-		text.CreateText(200, 50, "ohhhh", gRenderer);
+		//ps.renderProjectiles(gRenderer, OffsetX, OffsetY);
+
+
 		SDL_RenderPresent(gRenderer);
 
 		//~~~~~~~~~~~~~~~post-render logic step~~~~~~~~~~~~
