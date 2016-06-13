@@ -5,6 +5,7 @@
 #include <string>
 #include "GridTile.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "ProjectileSystem.h"
 
 
@@ -82,6 +83,7 @@ int main(int argc, char* args[]) {
 	SDL_Event e;
 
 	Player player(gRenderer);
+	Enemy enemy(gRenderer);
 
 	SDL_ShowCursor(SDL_DISABLE);
 
@@ -115,6 +117,8 @@ int main(int argc, char* args[]) {
 
 		player.cursorRotate();
 
+		enemy.getDirection(player);
+		enemy.move();
 		
 
 		//~~~~~~~~~~~~~render step~~~~~~~~~~~~~~~~~~~~
@@ -143,6 +147,7 @@ int main(int argc, char* args[]) {
 		}
 		
 		player.render(gRenderer, OffsetX, OffsetY);
+		enemy.render(gRenderer, OffsetX, OffsetY);
 		ps.renderProjectiles(gRenderer, OffsetX, OffsetY);
 
 

@@ -22,7 +22,7 @@ Projectile::Projectile(int x1, int y1, int x2, int y2, double speed)
 
 	speedX = (speed * cos(radians));
 	speedY = -(speed * sin(radians));
-	std::cout << radians * (180 / M_PI) << std::endl;
+	//std::cout << radians * (180 / M_PI) << std::endl;
 
 	active = true;
 }

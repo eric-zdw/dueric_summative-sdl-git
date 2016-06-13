@@ -29,7 +29,7 @@ Player::Player(SDL_Renderer *renderer)
 	playerSpace.h = PLAYER_HEIGHT;
 	playerSpace.w = PLAYER_WIDTH;
 
-	PROJECTILE_SPEED = 30.f;
+	PROJECTILE_SPEED = 32.f;
 
 	isShooting = false;
 	shootDelay = 0;

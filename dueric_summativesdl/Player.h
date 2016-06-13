@@ -23,7 +23,7 @@ public:
 	static const int CROSS_OFFSETX = -12;
 	static const int CROSS_OFFSETY = -12;
 
-	static const int FIRE_RATE = 7;
+	static const int FIRE_RATE = 6;
 
 	//declared in .cpp
 	double PROJECTILE_SPEED;
