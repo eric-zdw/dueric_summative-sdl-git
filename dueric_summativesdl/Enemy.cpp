@@ -8,10 +8,16 @@ Enemy::Enemy(SDL_Renderer *renderer)
 	texture = SDL_CreateTextureFromSurface(renderer, surface);
 	SDL_FreeSurface(surface);
 
+	health = 100;
 	speed = 3;
 
 	renderSpace.h = ENEMY_HEIGHT;
 	renderSpace.w = ENEMY_WIDTH;
+
+	collisionBox.h = ENEMY_HEIGHT;
+	collisionBox.w = ENEMY_WIDTH;
+
+	isActive = true;
 }
 
 void Enemy::getDirection(Player player)
@@ -29,7 +35,6 @@ void Enemy::getDirection(Player player)
 
 	speedX = (speed * cos(radians));
 	speedY = -(speed * sin(radians));
-	std::cout << radians << " " << vectorY << std::endl;
 	//std::cout << radians * (180 / M_PI) << std::endl;
 }
 
@@ -46,6 +51,10 @@ void Enemy::move()
 		posY = 0;
 	if (posY > 1024)
 		posY = 1024;
+
+	collisionBox.x = posX - (ENEMY_WIDTH / 2);
+	collisionBox.y = posY - (ENEMY_HEIGHT / 2);
+
 }
 
 void Enemy::render(SDL_Renderer *renderer, int offsetX, int offsetY)
@@ -57,4 +66,23 @@ void Enemy::render(SDL_Renderer *renderer, int offsetX, int offsetY)
 	renderSpace.y = offPosY - (ENEMY_HEIGHT / 2);
 
 	SDL_RenderCopy(renderer, texture, NULL, &renderSpace);
+}
+
+SDL_Rect Enemy::getCollisionBox()
+{
+	return collisionBox;
+}
+
+void Enemy::loseHealth(int damage)
+{
+	health -= damage;
+	if (health <= 0)
+	{
+		isActive = false;
+	}
+}
+
+bool Enemy::getStatus()
+{
+	return isActive;
 }

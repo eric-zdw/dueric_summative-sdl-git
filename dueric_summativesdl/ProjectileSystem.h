@@ -18,5 +18,7 @@ public:
 	void renderProjectiles(SDL_Renderer*, int, int);
 	int getSize();
 
+	std::vector<PlayerProj> getList();
+
 
 };

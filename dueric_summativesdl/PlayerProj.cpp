@@ -8,12 +8,17 @@ PlayerProj::PlayerProj(int x1, int y1, int x2, int y2, double speed, SDL_Rendere
 	projHeight = 16;
 	projWidth = 6;
 
+	damage = 15;
+
 	renderSpace.h = projHeight;
 	renderSpace.w = projWidth;
 
 	path = "playerproj.png";
 	surface = IMG_Load(path.c_str());
 	texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	collisionBox.w = 4;
+	collisionBox.h = 4;
 
 	lifetime = 200;
 }

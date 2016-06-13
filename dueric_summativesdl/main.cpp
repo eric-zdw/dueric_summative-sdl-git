@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "ProjectileSystem.h"
+#include "EnemySystem.h"
 
 
 extern const int SCREEN_WIDTH = 1280;
@@ -16,6 +17,8 @@ extern int shakeIntensity = 0;
 
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
+
+EnemySystem es();
 
 int OffsetX = 0;
 int OffsetY = 0;
@@ -75,6 +78,9 @@ int main(int argc, char* args[]) {
 	loadMedia();
 
 	ProjectileSystem ps(gRenderer);
+	EnemySystem es;
+
+	es.SpawnEnemy(gRenderer);
 
 	GridTile grid(gRenderer);
 
@@ -83,7 +89,6 @@ int main(int argc, char* args[]) {
 	SDL_Event e;
 
 	Player player(gRenderer);
-	Enemy enemy(gRenderer);
 
 	SDL_ShowCursor(SDL_DISABLE);
 
@@ -113,12 +118,11 @@ int main(int argc, char* args[]) {
 			}
 		}
 
+		std::cout << ps.getList().size() << std::endl;
+		es.moveEnemies(ps, player);
 		ps.moveProjectiles();
 
 		player.cursorRotate();
-
-		enemy.getDirection(player);
-		enemy.move();
 		
 
 		//~~~~~~~~~~~~~render step~~~~~~~~~~~~~~~~~~~~
@@ -147,9 +151,8 @@ int main(int argc, char* args[]) {
 		}
 		
 		player.render(gRenderer, OffsetX, OffsetY);
-		enemy.render(gRenderer, OffsetX, OffsetY);
 		ps.renderProjectiles(gRenderer, OffsetX, OffsetY);
-
+		es.renderEnemies(gRenderer, OffsetX, OffsetY);
 
 		SDL_RenderPresent(gRenderer);
 

@@ -44,6 +44,9 @@ void Projectile::Propogate()
 	posX += speedX;
 	posY += speedY;
 
+	collisionBox.x = posX - (collisionBox.w / 2);
+	collisionBox.y = posY - (collisionBox.h / 2);
+
 	lifetime--;
 	if (lifetime <= 0)
 		active = false;
@@ -55,4 +58,19 @@ void Projectile::Propogate()
 bool Projectile::isActive()
 {
 	return active;
+}
+
+void Projectile::setActive(bool x)
+{
+	active = x;
+}
+
+int Projectile::getDamage()
+{
+	return damage;
+}
+
+SDL_Rect Projectile::getCollisionBox()
+{
+	return collisionBox;
 }

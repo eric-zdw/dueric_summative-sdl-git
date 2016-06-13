@@ -25,6 +25,8 @@ protected:
 	double speed;
 	int lifetime;
 
+	int damage;
+
 	std::string path;
 
 	SDL_Texture *texture;
@@ -36,6 +38,7 @@ protected:
 	double radians;
 	double hyp;
 
+	SDL_Rect collisionBox;
 public:
 	Projectile(int x1, int y1, int x2, int y2, double speed);
 	void render(SDL_Renderer *renderer, int, int);
@@ -43,5 +46,9 @@ public:
 	void Propogate();
 
 	bool isActive();
+	void setActive(bool x);
 
+	SDL_Rect getCollisionBox();
+
+	int getDamage();
 };

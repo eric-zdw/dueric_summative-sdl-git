@@ -43,19 +43,15 @@ void Player::readInput(SDL_Event& e, ProjectileSystem ps, SDL_Renderer *renderer
 		{
 		case SDLK_w:
 			dirY += -1;
-			std::cout << "up";
 			break;
 		case SDLK_s:
 			dirY += 1;
-			std::cout << "up";
 			break;
 		case SDLK_a:
 			dirX += -1;
-			std::cout << "up";
 			break;
 		case SDLK_d:
 			dirX += 1;
-			std::cout << "up";
 			break;
 		}
 	}
@@ -66,19 +62,15 @@ void Player::readInput(SDL_Event& e, ProjectileSystem ps, SDL_Renderer *renderer
 		{
 		case SDLK_w:
 			dirY -= -1;
-			std::cout << "up";
 			break;
 		case SDLK_s:
 			dirY -= 1;
-			std::cout << "up";
 			break;
 		case SDLK_a:
 			dirX -= -1;
-			std::cout << "up";
 			break;
 		case SDLK_d:
 			dirX -= 1;
-			std::cout << "up";
 			break;
 		}
 	}
@@ -185,7 +177,6 @@ void Player::cursorRotate()
 
 int Player::ShootMechanism()
 {
-	std::cout << shootDelay << std::endl;
 	if (shootDelay != 0)
 	{
 		shootDelay -= 1;

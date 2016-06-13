@@ -29,12 +29,21 @@ private:
 	int vectorX, vectorY;
 	double speedX, speedY;
 
+	SDL_Rect collisionBox;
+
+	bool isActive;
+
 public:
 	Enemy(SDL_Renderer*);
 	void move();
 	void getDirection(Player);
 	void render(SDL_Renderer*, int, int);
 
+	SDL_Rect getCollisionBox();
+
+	void loseHealth(int);
+
+	bool getStatus();
 
 
 };
