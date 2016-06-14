@@ -9,6 +9,8 @@
 #include "ProjectileSystem.h"
 #include "EnemySystem.h"
 #include "ParticleSystem.h"
+#include <random>
+#include <time.h>
 
 
 extern const int SCREEN_WIDTH = 1280;
@@ -24,6 +26,7 @@ int OffsetY = 0;
 
 bool init()
 {
+	srand(time(NULL));
 	bool success = true;
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -156,7 +159,6 @@ int main(int argc, char* args[]) {
 		ps.renderProjectiles(gRenderer, OffsetX, OffsetY);
 		es.renderEnemies(gRenderer, OffsetX, OffsetY);
 		pas.renderParticles(gRenderer, OffsetX, OffsetY);
-		std::cout << pas.getSize() << std::endl;
 
 		SDL_RenderPresent(gRenderer);
 

@@ -12,7 +12,7 @@ void ParticleSystem::CreateBurst(int x, int y, int quantity, SDL_Renderer* rende
 {
 	double radians;
 
-	for (int i = 0; i < 25; i++)
+	for (int i = 0; i < quantity; i++)
 	{
 		radians = ((double)rand() / RAND_MAX) * (2 * M_PI);
 		Particle newParticle(x, y, rand() % 45 + 5, radians, 80, renderer);

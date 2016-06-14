@@ -129,9 +129,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BounceEnemy.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyProj.cpp" />
     <ClCompile Include="EnemySystem.cpp" />
+    <ClCompile Include="FollowEnemy.cpp" />
     <ClCompile Include="GridTile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Particle.cpp" />
@@ -142,8 +144,10 @@
     <ClCompile Include="ProjectileSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BounceEnemy.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemySystem.h" />
+    <ClInclude Include="FollowEnemy.h" />
     <ClInclude Include="GridTile.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleSystem.h" />

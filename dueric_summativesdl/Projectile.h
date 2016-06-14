@@ -11,8 +11,6 @@ private:
 	double speedX;
 	double speedY;
 
-
-
 	int vectorX, vectorY;
 
 protected:
@@ -39,6 +37,7 @@ protected:
 	double hyp;
 
 	SDL_Rect collisionBox;
+
 public:
 	Projectile(int x1, int y1, int x2, int y2, double speed);
 	void render(SDL_Renderer *renderer, int, int);
@@ -53,4 +52,7 @@ public:
 	SDL_Rect getCollisionBox();
 
 	int getDamage();
+
+	double getX();
+	double getY();
 };

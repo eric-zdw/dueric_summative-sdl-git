@@ -1,15 +1,29 @@
-﻿Build started 6/14/2016 4:35:55 PM.
+﻿Build started 6/14/2016 6:26:56 PM.
      1>Project "C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\dueric_summativesdl\dueric_summativesdl.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Particle.cpp
-         Particle.cpp
-     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\particle.cpp(29): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\particle.cpp(44): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\particle.cpp(45): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt EnemySystem.cpp main.cpp
+         EnemySystem.cpp
+     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\enemysystem.cpp(42): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\enemysystem.cpp(51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\enemysystem.cpp(56): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\enemysystem.cpp(64): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\enemysystem.cpp(71): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\enemysystem.cpp(73): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\enemysystem.cpp(80): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\enemysystem.cpp(84): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\enemysystem.cpp(86): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\enemysystem.cpp(93): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\enemysystem.cpp(110): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\eric\documents\visual studio 2015\projects\dueric_summative-sdl-git\dueric_summativesdl\enemysystem.cpp(114): warning C4018: '<': signed/unsigned mismatch
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         main.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\Debug\dueric_summativesdl.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\Debug\dueric_summativesdl.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\Debug\dueric_summativesdl.lib" /MACHINE:X86 Debug\Enemy.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\Debug\dueric_summativesdl.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_ttf.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\Debug\dueric_summativesdl.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\eric\Documents\Visual Studio 2015\Projects\dueric_summative-sdl-git\Debug\dueric_summativesdl.lib" /MACHINE:X86 Debug\BounceEnemy.obj
+         Debug\Enemy.obj
          Debug\EnemyProj.obj
          Debug\EnemySystem.obj
+         Debug\FollowEnemy.obj
          Debug\GridTile.obj
          Debug\main.obj
          Debug\Particle.obj
@@ -23,4 +37,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.75
+Time Elapsed 00:00:00.93

@@ -5,7 +5,7 @@
 #include "Player.h"
 
 class Enemy {
-private:
+protected:
 	int health;
 	double direction;
 	double speed;
@@ -26,7 +26,6 @@ private:
 	double posX, posY;
 	int offPosX, offPosY;
 
-	int vectorX, vectorY;
 	double speedX, speedY;
 
 	SDL_Rect collisionBox;
@@ -35,8 +34,6 @@ private:
 
 public:
 	Enemy(SDL_Renderer*, int, int);
-	void move();
-	void getDirection(Player);
 	void render(SDL_Renderer*, int, int);
 
 	SDL_Rect getCollisionBox();

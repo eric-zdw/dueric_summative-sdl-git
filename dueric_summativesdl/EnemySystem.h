@@ -7,12 +7,19 @@
 #include "Enemy.h"
 #include "Player.h"
 #include "ParticleSystem.h"
+#include "FollowEnemy.h"
+#include "BounceEnemy.h"
 
 class EnemySystem {
 private:
-	std::vector<Enemy> enemyList;
-	static const int SPAWN_DELAY = 150;
+	std::vector<BounceEnemy> bEnemyList;
+	std::vector<FollowEnemy> fEnemyList;
+	static const int SPAWN_DELAY = 200;
+	int spawnReset;
 	int spawnTimer;
+
+	int reduceDelay;
+	int chooseEnemy;
 
 public:
 	EnemySystem();

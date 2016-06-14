@@ -74,3 +74,13 @@ SDL_Rect Projectile::getCollisionBox()
 {
 	return collisionBox;
 }
+
+double Projectile::getX()
+{
+	return posX;
+}
+
+double Projectile::getY()
+{
+	return posY;
+}
