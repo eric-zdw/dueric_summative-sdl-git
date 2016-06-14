@@ -20,5 +20,5 @@ PlayerProj::PlayerProj(int x1, int y1, int x2, int y2, double speed, SDL_Rendere
 	collisionBox.w = 4;
 	collisionBox.h = 4;
 
-	lifetime = 200;
+	lifetime = 100;
 }

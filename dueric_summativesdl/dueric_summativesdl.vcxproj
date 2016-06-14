@@ -135,6 +135,7 @@
     <ClCompile Include="GridTile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerProj.cpp" />
     <ClCompile Include="Projectile.cpp" />
@@ -145,6 +146,7 @@
     <ClInclude Include="EnemySystem.h" />
     <ClInclude Include="GridTile.h" />
     <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerProj.h" />
     <ClInclude Include="Projectile.h" />

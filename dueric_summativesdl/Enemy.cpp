@@ -1,8 +1,11 @@
 #include "Enemy.h"
 #include <iostream>
 
-Enemy::Enemy(SDL_Renderer *renderer)
+Enemy::Enemy(SDL_Renderer *renderer, int x, int y)
 {
+	posX = x;
+	posY = y;
+
 	path = "enemy.png";
 	surface = IMG_Load(path.c_str());
 	texture = SDL_CreateTextureFromSurface(renderer, surface);
@@ -75,8 +78,8 @@ SDL_Rect Enemy::getCollisionBox()
 
 void Enemy::loseHealth(int damage)
 {
-	health -= damage;
-	if (health <= 0)
+	Enemy::health -= damage;
+	if (Enemy::health <= 0)
 	{
 		isActive = false;
 	}
@@ -85,4 +88,19 @@ void Enemy::loseHealth(int damage)
 bool Enemy::getStatus()
 {
 	return isActive;
+}
+
+int Enemy::getHealth()
+{
+	return health;
+}
+
+double Enemy::getX()
+{
+	return posX;
+}
+
+double Enemy::getY()
+{
+	return posY;
 }

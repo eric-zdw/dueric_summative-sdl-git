@@ -11,7 +11,7 @@ private:
 	double speedX;
 	double speedY;
 
-	bool active;
+
 
 	int vectorX, vectorY;
 
@@ -42,6 +42,8 @@ protected:
 public:
 	Projectile(int x1, int y1, int x2, int y2, double speed);
 	void render(SDL_Renderer *renderer, int, int);
+
+	bool active;
 
 	void Propogate();
 

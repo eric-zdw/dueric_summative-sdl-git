@@ -8,6 +8,7 @@
 #include "Enemy.h"
 #include "ProjectileSystem.h"
 #include "EnemySystem.h"
+#include "ParticleSystem.h"
 
 
 extern const int SCREEN_WIDTH = 1280;
@@ -17,8 +18,6 @@ extern int shakeIntensity = 0;
 
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
-
-EnemySystem es();
 
 int OffsetX = 0;
 int OffsetY = 0;
@@ -79,6 +78,7 @@ int main(int argc, char* args[]) {
 
 	ProjectileSystem ps(gRenderer);
 	EnemySystem es;
+	ParticleSystem pas;
 
 	es.SpawnEnemy(gRenderer);
 
@@ -114,13 +114,15 @@ int main(int argc, char* args[]) {
 			if (player.ShootMechanism() == 1)
 			{
 				ps.CreatePlayerProj(player.getX(), player.getY(), player.getCrossX(), player.getCrossY(), player.PROJECTILE_SPEED, gRenderer);
-				shakeIntensity += 5;
+				shakeIntensity += 2;
 			}
 		}
 
-		std::cout << ps.getList().size() << std::endl;
-		es.moveEnemies(ps, player);
-		ps.moveProjectiles();
+		es.SpawnEnemy(gRenderer);
+		es.moveEnemies(ps, player, pas, gRenderer);
+
+		ps.moveProjectiles();	
+		pas.moveParticles();
 
 		player.cursorRotate();
 		
@@ -153,6 +155,8 @@ int main(int argc, char* args[]) {
 		player.render(gRenderer, OffsetX, OffsetY);
 		ps.renderProjectiles(gRenderer, OffsetX, OffsetY);
 		es.renderEnemies(gRenderer, OffsetX, OffsetY);
+		pas.renderParticles(gRenderer, OffsetX, OffsetY);
+		std::cout << pas.getSize() << std::endl;
 
 		SDL_RenderPresent(gRenderer);
 

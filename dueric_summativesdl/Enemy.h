@@ -34,7 +34,7 @@ private:
 	bool isActive;
 
 public:
-	Enemy(SDL_Renderer*);
+	Enemy(SDL_Renderer*, int, int);
 	void move();
 	void getDirection(Player);
 	void render(SDL_Renderer*, int, int);
@@ -43,7 +43,11 @@ public:
 
 	void loseHealth(int);
 
+	int getHealth();
+
 	bool getStatus();
 
+	double getX();
+	double getY();
 
 };

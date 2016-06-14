@@ -41,7 +41,7 @@ int ProjectileSystem::getSize()
 	return ppList.size();
 }
 
-std::vector<PlayerProj> ProjectileSystem::getList()
+std::vector<PlayerProj> &ProjectileSystem::getList()
 {
 	return ppList;
 }
