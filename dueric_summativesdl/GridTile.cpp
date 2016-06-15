@@ -1,6 +1,10 @@
 #include "GridTile.h"
 #include <string>
 
+//Grid Tile:
+//Purple grid tile used to show playing area.
+//A 16x8 grid is rendered with a for loop in main().
+
 GridTile::GridTile(SDL_Renderer* renderer)
 {
 	std::string path = "purpledrank.png";

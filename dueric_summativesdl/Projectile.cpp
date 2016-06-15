@@ -1,6 +1,14 @@
 #include "Projectile.h"
 #include <iostream>
 
+//Base projectile class
+//(even though there is only
+//one type of projectile)
+//
+//Handles direction given two points
+//and travelling distance.
+//Also contains damage info.
+
 Projectile::Projectile(int x1, int y1, int x2, int y2, double speed)
 {
 	posX = (float)x1;

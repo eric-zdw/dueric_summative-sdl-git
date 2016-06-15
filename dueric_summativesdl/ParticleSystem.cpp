@@ -3,6 +3,10 @@
 #include <cmath>
 #include <iostream>
 
+//Handles particle creation, movement and rendering.
+//Includes function that creates a "burst" of
+//particles with random direction.
+
 ParticleSystem::ParticleSystem()
 {
 	

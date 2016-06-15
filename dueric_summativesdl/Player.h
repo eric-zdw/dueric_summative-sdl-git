@@ -23,7 +23,8 @@ public:
 	static const int CROSS_OFFSETX = -12;
 	static const int CROSS_OFFSETY = -12;
 
-	static const int FIRE_RATE = 6;
+	static const int FIRE_RATE = 4;
+	static const int DEATH_TIMER = 100;
 
 	//declared in .cpp
 	double PROJECTILE_SPEED;
@@ -46,6 +47,11 @@ public:
 	int ShootMechanism();
 	bool Shooting();
 
+	SDL_Rect getCollision();
+
+	bool &getActive();
+	void countTimer();
+
 private:
 	int posX, posY;
 
@@ -67,4 +73,8 @@ private:
 	SDL_Rect crosshairSpace;
 	SDL_Rect playerSpace;
 
+	SDL_Rect collisionBox;
+
+	bool isActive;
+	int deathTimer;
 };

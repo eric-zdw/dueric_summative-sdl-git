@@ -1,5 +1,9 @@
 #include "FollowEnemy.h"
 
+//Follower:
+//Calculates a straight path to the player
+//and moves slowly in that direction.
+
 FollowEnemy::FollowEnemy(SDL_Renderer *renderer, int x, int y) : Enemy(renderer, x, y)
 {
 	path = "enemy.png";
@@ -7,10 +11,12 @@ FollowEnemy::FollowEnemy(SDL_Renderer *renderer, int x, int y) : Enemy(renderer,
 	texture = SDL_CreateTextureFromSurface(renderer, surface);
 	SDL_FreeSurface(surface);
 
-	health = 100;
+	health = 120;
 	speed = 3;
 }
 
+
+//Uses basic trigonometry to find its path.
 void FollowEnemy::getDirection(Player player)
 {
 	vectorX = player.getX() - posX;
@@ -26,24 +32,26 @@ void FollowEnemy::getDirection(Player player)
 
 	speedX = (speed * cos(radians));
 	speedY = -(speed * sin(radians));
-	//std::cout << radians * (180 / M_PI) << std::endl;
 }
 
-void FollowEnemy::move()
+void FollowEnemy::move(Player player)
 {
-	posX += speedX;
-	posY += speedY;
+	if (player.getActive() == true)
+	{
+		posX += speedX;
+		posY += speedY;
 
-	if (posX < 0)
-		posX = 0;
-	if (posX > 2048)
-		posX = 2048;
-	if (posY < 0)
-		posY = 0;
-	if (posY > 1024)
-		posY = 1024;
+		if (posX < 0)
+			posX = 0;
+		if (posX > 2048)
+			posX = 2048;
+		if (posY < 0)
+			posY = 0;
+		if (posY > 1024)
+			posY = 1024;
 
-	collisionBox.x = posX - (ENEMY_WIDTH / 2);
-	collisionBox.y = posY - (ENEMY_HEIGHT / 2);
+		collisionBox.x = posX - (ENEMY_WIDTH / 2);
+		collisionBox.y = posY - (ENEMY_HEIGHT / 2);
+	}
 
 }

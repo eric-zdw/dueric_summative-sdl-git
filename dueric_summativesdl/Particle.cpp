@@ -1,6 +1,9 @@
 #include "Particle.h"
 #include <cmath>
 
+//Particles created when the player
+//or an enemy is destroyed.
+
 Particle::Particle(int x, int y, int speed, double radians, int time, SDL_Renderer *renderer)
 {
 	posX = x;

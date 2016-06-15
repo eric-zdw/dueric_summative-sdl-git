@@ -131,7 +131,6 @@
   <ItemGroup>
     <ClCompile Include="BounceEnemy.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EnemyProj.cpp" />
     <ClCompile Include="EnemySystem.cpp" />
     <ClCompile Include="FollowEnemy.cpp" />
     <ClCompile Include="GridTile.cpp" />

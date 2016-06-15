@@ -8,6 +8,6 @@ private:
 public:
 	FollowEnemy(SDL_Renderer*, int, int);
 	void getDirection(Player);
-	void move();
+	void move(Player);
 
 };

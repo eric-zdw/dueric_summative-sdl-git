@@ -1,6 +1,9 @@
 #include "Enemy.h"
 #include <iostream>
 
+//Base enemy class.
+//See other enemy classes for behaviours.
+
 Enemy::Enemy(SDL_Renderer *renderer, int x, int y)
 {
 	posX = x;

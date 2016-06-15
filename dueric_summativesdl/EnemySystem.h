@@ -23,11 +23,12 @@ private:
 
 public:
 	EnemySystem();
-	void SpawnEnemy(SDL_Renderer*);
+	void SpawnEnemy(SDL_Renderer*, Player);
 
-	void moveEnemies(ProjectileSystem&, Player, ParticleSystem&, SDL_Renderer*);
+	void moveEnemies(ProjectileSystem&, Player&, ParticleSystem&, SDL_Renderer*);
 	void renderEnemies(SDL_Renderer*, int, int);
-	std::vector<Enemy> &getList();
+
+	void resetEnemies(SDL_Renderer*, Player&, ParticleSystem&);
 
 };
 

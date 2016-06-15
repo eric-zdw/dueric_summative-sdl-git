@@ -3,6 +3,9 @@
 #include "Player.h"
 #include <iostream>
 
+//Handles all travelling projectiles
+//creation, movement and rendering.
+
 ProjectileSystem::ProjectileSystem(SDL_Renderer* renderer)
 {
 }

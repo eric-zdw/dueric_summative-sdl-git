@@ -1,6 +1,10 @@
 #include "BounceEnemy.h"
 #include <random>
 
+//Bounce Enemy:
+//Travels in a straight line (random direction);
+//bounces off boundaries of playing area.
+
 BounceEnemy::BounceEnemy(SDL_Renderer *renderer, int x, int y) : Enemy(renderer, x, y)
 {
 	path = "bounceenemy.png";
@@ -8,8 +12,8 @@ BounceEnemy::BounceEnemy(SDL_Renderer *renderer, int x, int y) : Enemy(renderer,
 	texture = SDL_CreateTextureFromSurface(renderer, surface);
 	SDL_FreeSurface(surface);
 
-	health = 50;
-	speed = 5;
+	health = 45;
+	speed = 8;
 
 	double radians = ((double)rand() / RAND_MAX) * (2 * M_PI);
 	speedX = abs(speed * cos(radians));
